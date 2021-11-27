@@ -1,0 +1,5 @@
+ID,FULLNAME,MAIL,PASSWORD
+4,nose,xd@tec.com,sdf
+1,amen,asadf@1.com,aw
+289383,uwu,uwu@1.com,aadfbw
+1804289383,uwu,uwu@1.com,aadfbw
