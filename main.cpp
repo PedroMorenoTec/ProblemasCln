@@ -222,8 +222,8 @@ void deletePost() {
       // Obtener el mensaje de error
       string msg = error.what();
 
-      // Si el mensaje de error contiene la palabra "no such column" entonces decirle al usuario que el id es inválido, si no, se trata de otro error y debemos emitirlo
-      if (msg.find("no such column") != string::npos) 
+      // Si el mensaje de error contiene la palabra "no such column" o "syntax error" entonces decirle al usuario que el id es inválido, si no, se trata de otro error y debemos emitirlo
+      if (msg.find("no such column") != string::npos || msg.find("syntax error") != string::npos) 
         cout<<"Id inválido"<<endl;
       else
         throw invalid_argument(msg);
@@ -271,8 +271,8 @@ void votePost() {
       // Obtener el mensaje del error
       string msg = error.what();
 
-      // Si el mensaje contiene la palabra "no such column" entonces decirle al usuario que el Id es inválido, si no, emitir un error 
-      if (msg.find("no such column") != string::npos) 
+      // Si el mensaje contiene la palabra "no such column" o "syntax error" entonces decirle al usuario que el Id es inválido, si no, emitir un error 
+      if (msg.find("no such column") != string::npos || msg.find("syntax error") != string::npos)
         cout<<"Id inválido"<<endl;
       else
         throw invalid_argument(msg);
