@@ -461,7 +461,7 @@ int main() {
   sqlite3_open("database.db", &db);
 
   // Para poder imprimir acentos en windows
-  setlocale(LC_ALL, "");
+  setlocale(LC_CTYPE, "Spanish");
   
   // Mostrar menú principal
   mainMenu();
