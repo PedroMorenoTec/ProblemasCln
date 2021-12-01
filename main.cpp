@@ -4,6 +4,8 @@
 #include <sstream>
 #include <vector>
 #include <fstream>
+#include <wchar.h> 
+#include <locale.h>
 
 /*
 Referencias:
@@ -19,6 +21,7 @@ https://www.cplusplus.com/reference/stdexcept/invalid_argument/
 https://stackoverflow.com/questions/2340281/check-if-a-string-contains-a-string-in-c
 https://www.cplusplus.com/reference/cstdio/remove/
 https://stackoverflow.com/questions/12774207/fastest-way-to-check-if-a-file-exist-using-standard-c-c11-14-17-c
+https://www.holadevs.com/pregunta/60026/how-to-print-characters-with-accents-in-c
 */
 using namespace std;
 
@@ -457,6 +460,9 @@ int main() {
   // Abrir la base de datos
   sqlite3_open("database.db", &db);
 
+  // Para poder imprimir acentos en windows
+  setlocale(LC_ALL, "");
+  
   // Mostrar menú principal
   mainMenu();
   return 0;
