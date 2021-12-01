@@ -4,8 +4,6 @@
 #include <sstream>
 #include <vector>
 #include <fstream>
-#include <wchar.h> 
-#include <locale.h>
 
 /*
 Referencias:
@@ -21,7 +19,6 @@ https://www.cplusplus.com/reference/stdexcept/invalid_argument/
 https://stackoverflow.com/questions/2340281/check-if-a-string-contains-a-string-in-c
 https://www.cplusplus.com/reference/cstdio/remove/
 https://stackoverflow.com/questions/12774207/fastest-way-to-check-if-a-file-exist-using-standard-c-c11-14-17-c
-https://www.holadevs.com/pregunta/60026/how-to-print-characters-with-accents-in-c
 */
 using namespace std;
 
@@ -154,8 +151,8 @@ void viewPosts() {
     cout<<"Post ID: "<<post[0]<<endl;
     cout<<"Fecha: "<<post[1]<<endl;
     cout<<"Usuario: "<<post[2]<<endl;
-    cout<<"Título: "<<post[3]<<endl;
-    cout<<"Descripción: "<<post[4]<<endl;
+    cout<<"Titulo: "<<post[3]<<endl;
+    cout<<"Descripcion: "<<post[4]<<endl;
     cout<<"Imagen: "<<post[5]<<endl;
     cout<<"Votos: "<<post[6]<<endl;
     cout<<endl<<endl;
@@ -173,8 +170,8 @@ void createPost() {
 
   // Recoger datos como el título, la descripción y la imgSrc del post
   cout<<"Crear Post: "<<endl;
-  string title = menuItem("Introduzca título");
-  string description = menuItem("Introduzca descripción");
+  string title = menuItem("Introduzca titulo");
+  string description = menuItem("Introduzca descripcion");
   string imgSrc = menuItem("Introduzca link de imagen");
 
   // Crear sql para insertar el post en la tabla
@@ -227,7 +224,7 @@ void deletePost() {
 
       // Si el mensaje de error contiene la palabra "no such column" o "syntax error" entonces decirle al usuario que el id es inválido, si no, se trata de otro error y debemos emitirlo
       if (msg.find("no such column") != string::npos || msg.find("syntax error") != string::npos) 
-        cout<<"Id inválido"<<endl;
+        cout<<"Id invalido"<<endl;
       else
         throw invalid_argument(msg);
     }
@@ -276,7 +273,7 @@ void votePost() {
 
       // Si el mensaje contiene la palabra "no such column" o "syntax error" entonces decirle al usuario que el Id es inválido, si no, emitir un error 
       if (msg.find("no such column") != string::npos || msg.find("syntax error") != string::npos)
-        cout<<"Id inválido"<<endl;
+        cout<<"Id invalido"<<endl;
       else
         throw invalid_argument(msg);
     }
@@ -330,7 +327,7 @@ void postsMenu() {
   cout<<"[4] Votar Post"<<endl;
   cout<<"[5] Eliminar Mi Cuenta"<<endl;
   cout<<"[6] Salir"<<endl;
-  string o = menuItem("Selección");
+  string o = menuItem("Seleccion");
   // Redirigir a las pantallas correspondientes, si lo introducido no coincide, entonces volver a mostrar este menú
   if(o=="1") {
     viewPosts();
@@ -356,13 +353,13 @@ void registerMenu() {
   // Recoger el nombre completo, el correo y la contraseña 2 veces
   cout<<"Register: "<<endl;
   string fullName = menuItem("Introduzca nombre completo");
-  string mail = menuItem("Introduzca su correo electrónico");
+  string mail = menuItem("Introduzca su correo electronico");
   string password = menuItem("Introduzca su contraseña");
   string passwordConf = menuItem("Introduzca su contraseña de nuevo");
 
   // Si las contraseñas son distintas entonces decirle al usuario que no se puede
   if(password != passwordConf) {
-    cout<<endl<<"Contraseñas no coinciden"<<endl;
+    cout<<endl<<"Contrasenas no coinciden"<<endl;
     // Esperar a que presione enter para continuar
     enterToContinue();
     // Redirigir al menú principal
@@ -389,7 +386,7 @@ void registerMenu() {
         throw invalid_argument(error);
 
       // Si la ejecución continúa entonces decirle al usuario que el correo ya está registrado
-      cout<<endl<<"El correo ya está registrado"<<endl;
+      cout<<endl<<"El correo ya esta registrado"<<endl;
     }
 
     // Esperar a que el usuario presione enter
@@ -405,7 +402,7 @@ void loginMenu() {
 
   // Recoger el correo y contraseña del usuario
   cout<<"Login: "<<endl;
-  string mail = menuItem("Introduzca su correo electrónico");
+  string mail = menuItem("Introduzca su correo electronico");
   string password = menuItem("Introduzca su contraseña");
 
   // Crear sql para obtener el usuario de la base de datos
@@ -436,12 +433,12 @@ void mainMenu() {
   // Limpiar la pantalla
   clear();
   // Mostrar menú principal
-  cout<<"Menú Principal"<<endl;
+  cout<<"Menu Principal"<<endl;
   cout<<"[1] Login"<<endl; 
   cout<<"[2] Registrarse"<<endl;
   cout<<"[3] Reestablecer Base De Datos"<<endl;
   cout<<"[4] Salir"<<endl;
-  string o = menuItem("Selección");
+  string o = menuItem("Seleccion");
   // Redirigir a las pantallas correspondientes, si introdujo algo mal, volverle a mostrar el menú
   if(o=="1") {
     loginMenu();
@@ -460,9 +457,6 @@ int main() {
   // Abrir la base de datos
   sqlite3_open("database.db", &db);
 
-  // Para poder imprimir acentos en windows
-  setlocale(LC_CTYPE, "Spanish");
-  
   // Mostrar menú principal
   mainMenu();
   return 0;
