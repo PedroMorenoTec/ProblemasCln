@@ -354,8 +354,8 @@ void registerMenu() {
   cout<<"Register: "<<endl;
   string fullName = menuItem("Introduzca nombre completo");
   string mail = menuItem("Introduzca su correo electronico");
-  string password = menuItem("Introduzca su contraseña");
-  string passwordConf = menuItem("Introduzca su contraseña de nuevo");
+  string password = menuItem("Introduzca su contrasena");
+  string passwordConf = menuItem("Introduzca su contrasena de nuevo");
 
   // Si las contraseñas son distintas entonces decirle al usuario que no se puede
   if(password != passwordConf) {
@@ -403,7 +403,7 @@ void loginMenu() {
   // Recoger el correo y contraseña del usuario
   cout<<"Login: "<<endl;
   string mail = menuItem("Introduzca su correo electronico");
-  string password = menuItem("Introduzca su contraseña");
+  string password = menuItem("Introduzca su contrasena");
 
   // Crear sql para obtener el usuario de la base de datos
   stringstream sql;
@@ -416,7 +416,7 @@ void loginMenu() {
 
   // Si la matriz está vacía, entonces decirle al usuario que algo introdujo mal
   if(result.size() == 0) {
-    cout<<endl<<"Usuario o contraseña incorrecta"<<endl;
+    cout<<endl<<"Usuario o contrasena incorrecta"<<endl;
     // Esperar a que presione enter
     enterToContinue();
     // Redirigir al menú principal
