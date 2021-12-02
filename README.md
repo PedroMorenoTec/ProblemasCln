@@ -6,7 +6,12 @@ En este sistema los usuarios se autentican con su correo y contraseña. Tienen l
 
 ## Instalación
 
-Compila y corre main.cpp adjuntando la extensión sqlite al compilador dependiendo del sistema operativo de tu computadora.
+Para correr (Windows) solo clona el repositorio y ejecuta:
+```bash
+./main.exe
+```
+
+Para compilar añade la extensión sqlite al compilador dependiendo del sistema operativo de tu computadora.
 ```bash
 g++ -o main main.cpp -l sqlite3 && ./main
 ```
